@@ -1,0 +1,138 @@
+%% Dokumentenklasse (Koma Script) -----------------------------------------
+\documentclass[bibliography=totocnumbered,
+   hidelinks,
+   %draft,
+   final,
+	 % --- Paper Settings ---
+   paper=a4,% [Todo: add alternatives]
+   paper=portrait, % landscape
+   pagesize=auto, % driver
+   % --- Base Font Size ---
+   fontsize=12pt,%
+	 % --- Koma Script Version ---
+   version=last, %
+ ]{scrbook} % Classes: scrartcl, scrreprt, scrbook
+
+
+% Encoding der Dateien (sonst funktionieren Umlaute nicht)
+% Fuer Linux -> utf8
+% Fuer Windows, alte Linux Distributionen -> latin1
+
+% Empfohlen latin1, da einige Pakete mit utf8 Zeichen nicht
+% funktionieren, z.B: listings, soul.
+%\usepackage[latin1]{inputenc}
+%\usepackage[psamsfonts]{amssymb} %PFEILE sonderzeichen
+%\usepackage{pstricks-add}        %ermöglicht das malen von Pfeilen
+%\usepackage[ansinew]{inputenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+\usepackage{epsfig}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{bm}
+%%% Preambel
+
+\input{preambel/settings}
+\input{preambel/preambel}
+
+%%%% Neue Befehle
+\input{macros/newcommands}
+\input{macros/TableCommands}
+
+%%% Silbentrennung
+\input{preambel/Hyphenation}
+
+\usepackage[comma,square,numbers,sort&compress]{natbib}
+
+%\usepackage{pstricks}        %ermöglicht das malen von Pfeilen
+%\usepackage[psamsfonts]{amssymb} %PFEILE sonderzeichen
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pst-all}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[binary-units]{siunitx}
+\sisetup{detect-weight=true, detect-family=true}
+\DeclareSIUnit\clight{$c$}
+\usepackage[capitalise]{cleveref}
+\usepackage{float}
+\usepackage{subcaption}
+%\usepackage{subfigure}
+%\usepackage{lineno} %line numbers 
+%\usepackage{pstricks, pstricks-add}
+%\usepackage{pspicture}
+%\usepackage[arrow, matrix, curve]{xy}
+
+%% Dokument Beginn %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{parskip}
+
+\usepackage[T1]{fontenc}
+\newcommand{\changefont}[3]{
+\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+
+\begin{document}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\definecolor{blizzardblue}{rgb}{0.67, 0.9, 0.93}
+\definecolor{ceruleanblue}{rgb}{0.16, 0.32, 0.75}
+\definecolor{dodgerblue}{rgb}{0.12, 0.56, 1.0}
+\definecolor{egyptianblue}{rgb}{0.06, 0.2, 0.65}
+\definecolor{electricultramarine}{rgb}{0.25, 0.0, 1.0}
+\definecolor{glaucous}{rgb}{0.38, 0.51, 0.71}
+\definecolor{hanblue}{rgb}{0.27, 0.42, 0.81}
+\definecolor{lightcornflowerblue}{rgb}{0.6, 0.81, 0.93}
+\definecolor{mediumslateblue}{rgb}{0.48, 0.41, 0.93}
+\definecolor{royalblue(web)}{rgb}{0.25, 0.41, 0.88}
+\hypersetup{pdftex=true, colorlinks=false, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue,citecolor=darkblue, urlcolor=darkblue, citebordercolor=darkblue, linkbordercolor=mediumslateblue}
+
+% Deckblatt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\input{content/Titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\vfill
+%First reviewer: Prof. Laura Fabbietti\\
+%Second reviewer: \\
+%Scientific supervisor: Andreas Mathis
+%\cleardoublepage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\frontmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\cleardoublepage
+
+%\input{content/Abstract}
+
+% Inhaltsverzeichnis in den PDF-Links eintragen
+%\pdfbookmark[1]{Table of contents}{toc}
+
+\pagestyle{empty}
+\cleardoublepage
+\pagestyle{empty}
+\clearpage
+\pagestyle{scrheadings}
+\tableofcontents
+
+% Hauptteil
+\mainmatter
+\input{content/introduction}
+\input{content/TheAliceTPC}
+\input{content/TheTPCUpgrade}
+\input{content/TestBeam}
+\input{content/TPCSim}
+\input{content/Results}
+\input{content/SummaryandOutlook}
+
+% Anhang
+\appendix
+
+% Bibliographie
+\backmatter
+%\bibliographystyle{ieeetr}
+\bibliographystyle{utphys}
+%\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{references}
+
+%\clearpage
+% Abbildungs- und Tabellenverzeichnis
+%\listoffigures
+%\listoftables
+
+%% Dokument ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
